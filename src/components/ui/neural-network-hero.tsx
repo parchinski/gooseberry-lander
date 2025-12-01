@@ -124,39 +124,18 @@ const fragmentShader = `
     * buf[5]
     + vec4(2.2415268, -6.705987, -0.98861027, -2.117676);
 
-    buf[6] = sigmoid(buf[6]);
-    buf[7] = sigmoid(buf[7]);
-
-    // layer 9 ********************************************************************
-    buf[0] = mat4(vec4(1.6794263, 1.3817469, 2.9625452, 0.0), vec4(-1.8834411, -1.4806935, -3.5924516, 0.0), vec4(-1.3279216, -1.0918057, -2.3124623, 0.0), vec4(0.2662234, 0.23235129, 0.44178495, 0.0))
-    * buf[0]
-    + mat4(vec4(-0.6299101, -0.5945583, -0.9125601, 0.0), vec4(0.17828953, 0.18300213, 0.18182953, 0.0), vec4(-2.96544, -2.5819945, -4.9001055, 0.0), vec4(1.4195864, 1.1868085, 2.5176322, 0.0))
-    * buf[1]
-    + mat4(vec4(-1.2584374, -1.0552157, -2.1688404, 0.0), vec4(-0.7200217, -0.52666044, -1.438251, 0.0), vec4(0.15345335, 0.15196142, 0.272854, 0.0), vec4(0.945728, 0.8861938, 1.2766753, 0.0))
-    * buf[2]
-    + mat4(vec4(-2.4218085, -1.968602, -4.35166, 0.0), vec4(-22.683098, -18.0544, -41.954372, 0.0), vec4(0.63792, 0.5470648, 1.1078634, 0.0), vec4(-1.5489894, -1.3075932, -2.6444845, 0.0))
-    * buf[3]
-    + mat4(vec4(-0.49252132, -0.39877754, -0.91366625, 0.0), vec4(0.95609266, 0.7923952, 1.640221, 0.0), vec4(0.30616966, 0.15693925, 0.8639857, 0.0), vec4(1.1825981, 0.94504964, 2.176963, 0.0))
-    * buf[4]
-    + mat4(vec4(0.35446745, 0.3293795, 0.59547555, 0.0), vec4(-0.58784515, -0.48177817, -1.0614829, 0.0), vec4(2.5271258, 1.9991658, 4.6846647, 0.0), vec4(0.13042648, 0.08864098, 0.30187556, 0.0))
-    * buf[5]
-    + mat4(vec4(-1.7718065, -1.4033192, -3.3355875, 0.0), vec4(3.1664357, 2.638297, 5.378702, 0.0), vec4(-3.1724713, -2.6107926, -5.549295, 0.0), vec4(-2.851368, -2.249092, -5.3013067, 0.0))
-    * buf[6]
-    + mat4(vec4(1.5203838, 1.2212278, 2.8404984, 0.0), vec4(1.5210563, 1.2651345, 2.683903, 0.0), vec4(2.9789467, 2.4364579, 5.2347264, 0.0), vec4(2.2270417, 1.8825914, 3.8028636, 0.0))
-    * buf[7]
-    + vec4(-1.5468478, -3.6171484, 0.24762098, 0.0);
-
     buf[0] = sigmoid(buf[0]);
     return vec4(buf[0].x , buf[0].y , buf[0].z, 1.0);
   }
   
   void main() {
     vec2 uv = vUv * 2.0 - 1.0; uv.y *= -1.0;
-    // Modified to use our blue/violet accent colors
-    // Default was: 0.1 * sin(0.3 * iTime), 0.1 * sin(0.69 * iTime), 0.1 * sin(0.44 * iTime)
-    // We'll shift the phase slightly for a different "feel" but the core shader is a CPPN so color control is abstract
-    // We'll instead rely on the CSS overlay to tint it towards our brand
-    gl_FragColor = cppn_fn(uv, 0.1 * sin(0.2 * iTime), 0.1 * sin(0.5 * iTime), 0.1 * sin(0.3 * iTime));
+    // Blue/Accent dominant shader (using 221 83% 53% roughly)
+    // We inject more blue by multiplying the output with a blueish tint
+    vec4 color = cppn_fn(uv, 0.1 * sin(0.2 * iTime), 0.1 * sin(0.5 * iTime), 0.1 * sin(0.3 * iTime));
+    
+    // Tint towards blue #2563eb
+    gl_FragColor = mix(color, vec4(0.14, 0.39, 0.92, 1.0), 0.3);
   }
 `;
 
@@ -215,7 +194,7 @@ function ShaderBackground() {
   );
   
   return (
-    <div ref={canvasRef} className="bg-primary absolute inset-0 -z-10 w-full h-full" aria-hidden>
+    <div ref={canvasRef} className="bg-background absolute inset-0 -z-10 w-full h-full" aria-hidden>
       <Canvas
         camera={camera}
         gl={{ antialias: true, alpha: false }}
@@ -224,9 +203,7 @@ function ShaderBackground() {
       >
         <ShaderPlane />
       </Canvas>
-      {/* Overlay gradient to tint the background towards our brand colors */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/50 to-primary" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/80 via-transparent to-background" />
     </div>
   );
 }
@@ -264,7 +241,6 @@ export default function Hero({
 
   useGSAP(
     () => {
-      // Simple fade in animation without SplitText for wider compatibility
       if (!headerRef.current) return;
 
         gsap.set([headerRef.current, paraRef.current, ctaRef.current, badgeRef.current], {
@@ -303,20 +279,20 @@ export default function Hero({
   );
 
   return (
-    <section ref={sectionRef} className="relative h-screen w-full overflow-hidden bg-primary text-white">
+    <section ref={sectionRef} className="relative h-screen w-full overflow-hidden bg-background text-foreground">
       <ShaderBackground />
 
       <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-start gap-6 px-6 pb-24 pt-36 sm:gap-8 sm:pt-44 md:px-10 lg:px-16">
-        <div ref={badgeRef} className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 backdrop-blur-sm">
-          <span className="text-[10px] font-light uppercase tracking-[0.08em] text-accent-foreground/70 bg-accent/20 px-1.5 py-0.5 rounded text-accent-foreground">{badgeLabel}</span>
-          <span className="text-xs font-light tracking-tight text-white/80">{badgeText}</span>
+        <div ref={badgeRef} className="inline-flex items-center gap-2 rounded-full border border-primary/10 bg-primary/5 px-3 py-1.5 backdrop-blur-sm">
+          <span className="text-[10px] font-light uppercase tracking-[0.08em] text-accent bg-accent/10 px-1.5 py-0.5 rounded border border-accent/20">{badgeLabel}</span>
+          <span className="text-xs font-light tracking-tight text-muted-foreground">{badgeText}</span>
         </div>
 
-        <h1 ref={headerRef} className="max-w-3xl text-left text-5xl font-extralight leading-[1.1] tracking-tight text-white sm:text-6xl md:text-7xl">
+        <h1 ref={headerRef} className="max-w-3xl text-left text-5xl font-extralight leading-[1.1] tracking-tight text-foreground sm:text-6xl md:text-7xl">
           {title}
         </h1>
 
-        <p ref={paraRef} className="max-w-xl text-left text-lg font-light leading-relaxed tracking-tight text-white/70 sm:text-xl">
+        <p ref={paraRef} className="max-w-xl text-left text-lg font-light leading-relaxed tracking-tight text-muted-foreground sm:text-xl">
           {description}
         </p>
 
@@ -328,7 +304,7 @@ export default function Hero({
               className={`rounded-full px-8 py-4 text-sm font-medium transition-all duration-300 ${
                 button.primary
                   ? "bg-accent text-white hover:bg-accent/90 hover:shadow-[0_0_20px_rgba(37,99,235,0.3)]"
-                  : "border border-white/10 bg-white/5 text-white/90 hover:bg-white/10 backdrop-blur-sm"
+                  : "border border-primary/10 bg-white/50 text-foreground hover:bg-white/80 backdrop-blur-sm shadow-sm"
               }`}
             >
               {button.text}
@@ -336,7 +312,7 @@ export default function Hero({
           ))}
         </div>
 
-        <ul ref={microRef} className="mt-8 flex flex-wrap gap-8 text-sm font-light tracking-tight text-white/50">
+        <ul ref={microRef} className="mt-8 flex flex-wrap gap-8 text-sm font-light tracking-tight text-muted-foreground">
           {microDetails.map((detail, index) => {
             const refMap = [microItem1Ref, microItem2Ref, microItem3Ref];
             return (
