@@ -36,12 +36,13 @@
   .mesh-gradient {
     background-color: hsla(214, 32%, 91%, 1);
     background-image: 
-        radial-gradient(at 0% 0%, hsla(221, 83%, 53%, 0.15) 0px, transparent 50%),
-        radial-gradient(at 100% 0%, hsla(210, 100%, 60%, 0.1) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, hsla(220, 100%, 70%, 0.1) 0px, transparent 50%),
-        radial-gradient(at 0% 100%, hsla(215, 100%, 65%, 0.1) 0px, transparent 50%);
+        radial-gradient(at 0% 0%, hsla(221, 83%, 53%, 0.2) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, hsla(210, 100%, 60%, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, hsla(220, 100%, 70%, 0.15) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, hsla(215, 100%, 65%, 0.15) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, hsla(221, 83%, 53%, 0.1) 0px, transparent 50%);
     background-size: 200% 200%;
-    animation: mesh 20s ease-in-out infinite alternate;
+    animation: mesh 15s ease-in-out infinite alternate;
   }
 }
 
