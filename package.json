@@ -9,7 +9,6 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^12.6.12",
     "@fontsource/inter": "^5.2.8",
     "@tailwindcss/vite": "^4.1.17",
     "astro": "^5.16.3",
