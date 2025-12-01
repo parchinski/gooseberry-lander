@@ -1,7 +1,6 @@
 ---
 import '../styles/global.css';
 import '@fontsource/inter';
-import { ShaderBackground } from '@/components/ui/shader-background';
 
 interface Props {
 	title: string;
@@ -29,7 +28,7 @@ const { title, description = "Expertly crafted cybersecurity challenges for your
 		<title>{title}</title>
 	</head>
 	<body class="bg-background text-primary font-sans antialiased relative min-h-screen">
-        <ShaderBackground client:load />
+        <div class="fixed inset-0 -z-50 mesh-gradient w-full h-full" aria-hidden="true"></div>
 		<slot />
 	</body>
 </html>
