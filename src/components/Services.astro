@@ -7,27 +7,24 @@ const services = [
     title: "Custom Challenge Development",
     description: "We create scenarios tailored to your specific difficulty requirements ranging from entry-level web exploitation to advanced binary exploitation.",
     icon: Shield,
-    gradient: "from-blue-500/40 to-cyan-500/40"
+    gradient: "from-blue-600/40 to-cyan-500/40"
   },
   {
     title: "Challenge Bundles",
     description: "We offer pre-configured sets of challenges, such as OWASP Top 10 or Intro to Reverse Engineering, that are ready for immediate integration into your platform.",
     icon: Package,
-    gradient: "from-violet-500/40 to-purple-500/40"
+    gradient: "from-blue-500/40 to-indigo-500/40"
   },
   {
     title: "Technical QA & Maintenance",
     description: "We test, debug, and update your existing challenge repositories to ensure flags work correctly and vulnerabilities are stable.",
     icon: Search,
-    gradient: "from-emerald-500/40 to-teal-500/40"
+    gradient: "from-cyan-500/40 to-blue-500/40"
   }
 ];
 ---
 
-<section id="services" class="py-24 md:py-32 px-6 relative overflow-hidden">
-    {/* Ambient background gradient - Z-index fixed, removed bg-background from section */}
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[1200px] max-h-[1200px] bg-accent/20 rounded-full blur-[120px] -z-10 pointer-events-none mix-blend-screen"></div>
-    
+<section id="services" class="py-24 md:py-32 px-6 relative z-10">
     <div class="max-w-7xl mx-auto relative z-10">
         <div class="text-center mb-20">
             <span class="inline-block py-1 px-3 rounded-full bg-accent/10 text-accent text-xs font-medium tracking-wide uppercase mb-4 border border-accent/20 backdrop-blur-sm">

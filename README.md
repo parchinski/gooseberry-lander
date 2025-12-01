@@ -4,7 +4,7 @@ A high-performance landing page for Gooseberry Consulting, built with [Astro](ht
 
 ## Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
+Inside of the Astro project, you'll see the following folders and files:
 
 ```text
 /
