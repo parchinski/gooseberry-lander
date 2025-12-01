@@ -2,25 +2,49 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="py-12 px-6 border-t border-border/40 relative z-10 backdrop-blur-sm bg-background/20">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        <div class="flex flex-col items-center md:items-start gap-2">
-            <div class="flex items-center gap-2">
-                <img src="/favicon.png" alt="Logo" class="w-6 h-6 rounded opacity-80 grayscale hover:grayscale-0 transition-all" />
-                <span class="font-semibold tracking-tight text-foreground/80">Gooseberry Consulting</span>
+<footer class="py-12 sm:py-16 px-5 sm:px-6 relative z-10">
+    <!-- Top border gradient -->
+    <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
+
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8">
+            <!-- Brand -->
+            <div class="flex flex-col items-center md:items-start gap-3 sm:gap-4">
+                <a href="/" class="flex items-center gap-2.5 sm:gap-3 group">
+                    <img src="/favicon.png" alt="Gooseberry" class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl shadow-sm group-hover:scale-105 transition-transform duration-300" />
+                    <span class="font-bold text-base sm:text-lg tracking-tight text-foreground group-hover:text-blue-600 transition-colors duration-300 font-display">Gooseberry</span>
+                </a>
+                <p class="text-xs sm:text-sm text-muted-foreground text-center md:text-left">
+                    Expert cybersecurity challenge development.
+                </p>
             </div>
-            <p class="text-sm text-muted-foreground">
-                &copy; {currentYear} All rights reserved.
-            </p>
+
+            <!-- Links -->
+            <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
+                <nav class="flex items-center gap-4 sm:gap-6 text-sm">
+                    <a href="#services" class="text-muted-foreground hover:text-foreground transition-colors">Services</a>
+                    <a href="#about" class="text-muted-foreground hover:text-foreground transition-colors">About</a>
+                    <a href="#contact" class="text-muted-foreground hover:text-foreground transition-colors">Contact</a>
+                </nav>
+
+                <div class="h-px w-12 sm:h-6 sm:w-px bg-slate-200"></div>
+
+                <!-- Social -->
+                <a href="#" class="text-muted-foreground hover:text-blue-600 transition-colors p-2.5 hover:bg-blue-50 rounded-xl group" aria-label="LinkedIn">
+                    <svg class="h-5 w-5 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+            </div>
         </div>
 
-        <div class="flex items-center gap-6">
-            <a href="#" class="text-muted-foreground hover:text-accent transition-colors p-2 hover:bg-accent/5 rounded-full">
-                <span class="sr-only">LinkedIn</span>
-                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                </svg>
-            </a>
+        <!-- Bottom bar -->
+        <div class="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
+            <p>&copy; {currentYear} Gooseberry Consulting. All rights reserved.</p>
+            <div class="flex items-center gap-4 sm:gap-6">
+                <a href="#" class="hover:text-foreground transition-colors">Privacy</a>
+                <a href="#" class="hover:text-foreground transition-colors">Terms</a>
+            </div>
         </div>
     </div>
 </footer>

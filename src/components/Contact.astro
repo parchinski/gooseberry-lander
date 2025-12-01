@@ -3,54 +3,94 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { Mail, ArrowRight } from "lucide-react";
+import { Mail, ArrowRight, MessageSquare, Clock } from "lucide-react";
 ---
 
-<section id="contact" class="py-24 md:py-32 px-6 relative z-10">
-    <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-6">Ready to Elevate Your Event?</h2>
-            <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+<section id="contact" class="py-20 sm:py-28 md:py-36 px-5 sm:px-6 relative z-10">
+    <!-- Background accent -->
+    <div class="absolute inset-0 bg-gradient-to-t from-blue-50/80 via-transparent to-transparent pointer-events-none" aria-hidden="true"></div>
+
+    <div class="max-w-5xl mx-auto relative z-10">
+        <div class="text-center mb-10 sm:mb-16">
+            <span class="inline-flex items-center gap-2 py-1.5 px-3 sm:px-4 rounded-full bg-white/70 text-blue-600 text-[11px] sm:text-xs font-semibold tracking-wider uppercase mb-4 sm:mb-6 border border-blue-100 backdrop-blur-sm shadow-sm">
+                <MessageSquare className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                Get Started
+            </span>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.02em] mb-4 sm:mb-6 text-foreground font-display">
+                Ready to Elevate<br class="hidden sm:block" />Your Event?
+            </h2>
+            <p class="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 Let's discuss how we can build the perfect challenge set for your specific requirements.
             </p>
         </div>
 
-        <Card className="border-border/40 shadow-lg bg-card/40 backdrop-blur-md">
-            <CardContent className="p-8 md:p-12">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="space-y-6">
-                        <div class="space-y-2">
-                            <h3 class="text-2xl font-semibold tracking-tight">Get in Touch</h3>
-                            <p class="text-muted-foreground">
-                                Fill out the form or email us directly. We typically respond within 24 hours.
+        <Card className="border-0 shadow-xl sm:shadow-2xl shadow-slate-200/60 bg-white/80 backdrop-blur-xl rounded-2xl sm:rounded-3xl overflow-hidden">
+            <CardContent className="p-0">
+                <div class="grid lg:grid-cols-5">
+                    <!-- Left side info panel -->
+                    <div class="lg:col-span-2 bg-slate-50/50 p-6 sm:p-10 lg:p-12 flex flex-col justify-between text-foreground relative overflow-hidden border-r border-slate-100">
+                        <!-- Decorative elements - hidden on mobile -->
+                        <div class="hidden sm:block absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl" aria-hidden="true"></div>
+                        <div class="hidden sm:block absolute bottom-0 left-0 w-48 h-48 bg-cyan-500/5 rounded-full blur-2xl" aria-hidden="true"></div>
+
+                        <div class="relative z-10 space-y-4 sm:space-y-6">
+                            <h3 class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight font-display text-slate-900">
+                                Let's Build<br class="hidden sm:block" />Something Great
+                            </h3>
+                            <p class="text-muted-foreground leading-relaxed text-sm sm:text-base">
+                                Whether you need a single challenge or a complete event package, we're here to help bring your vision to life.
                             </p>
                         </div>
 
-                        <div class="flex items-center gap-3 text-muted-foreground hover:text-accent transition-colors">
-                            <div class="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center text-accent">
-                                <Mail className="w-5 h-5" />
+                        <div class="relative z-10 space-y-4 sm:space-y-5 mt-6 lg:mt-0">
+                            <a href="mailto:contact@gooseberryconsulting.com" class="flex items-center gap-3 sm:gap-4 group">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-blue-100 group-hover:border-blue-200 transition-all duration-300">
+                                    <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
+                                </div>
+                                <div>
+                                    <div class="text-[10px] sm:text-xs uppercase tracking-wider text-muted-foreground mb-0.5">Email us</div>
+                                    <div class="text-xs sm:text-sm font-medium text-foreground group-hover:text-blue-600 transition-colors break-all">contact@gooseberryconsulting.com</div>
+                                </div>
+                            </a>
+                            <div class="flex items-center gap-3 sm:gap-4">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center">
+                                    <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-600" />
+                                </div>
+                                <div>
+                                    <div class="text-[10px] sm:text-xs uppercase tracking-wider text-muted-foreground mb-0.5">Response time</div>
+                                    <div class="text-xs sm:text-sm font-medium text-foreground">Within 24 hours</div>
+                                </div>
                             </div>
-                            <a href="mailto:contact@gooseberryconsulting.com" class="font-medium">contact@gooseberryconsulting.com</a>
                         </div>
                     </div>
 
-                    <form class="space-y-4">
-                        <div class="grid gap-4">
-                            <div class="grid gap-2">
-                                <Input placeholder="Name" className="bg-background/40 border-border/40 focus:border-accent/50 focus:ring-accent/20 transition-all backdrop-blur-sm" />
+                    <!-- Right side form -->
+                    <div class="lg:col-span-3 p-6 sm:p-10 lg:p-12">
+                        <form class="space-y-5 sm:space-y-6 flex flex-col">
+                            <div class="grid sm:grid-cols-2 gap-4 sm:gap-5">
+                                <div class="space-y-1.5 sm:space-y-2">
+                                    <label for="name" class="text-sm font-medium text-foreground">Name</label>
+                                    <Input id="name" placeholder="John Doe" className="h-11 sm:h-12 bg-slate-50/50 border-slate-200 focus:border-blue-400 focus:ring-blue-400/20 transition-all rounded-lg sm:rounded-xl" />
+                                </div>
+                                <div class="space-y-1.5 sm:space-y-2">
+                                    <label for="email" class="text-sm font-medium text-foreground">Email</label>
+                                    <Input id="email" type="email" placeholder="john@company.com" className="h-11 sm:h-12 bg-slate-50/50 border-slate-200 focus:border-blue-400 focus:ring-blue-400/20 transition-all rounded-lg sm:rounded-xl" />
+                                </div>
                             </div>
-                            <div class="grid gap-2">
-                                <Input type="email" placeholder="Email" className="bg-background/40 border-border/40 focus:border-accent/50 focus:ring-accent/20 transition-all backdrop-blur-sm" />
+                            <div class="space-y-1.5 sm:space-y-2">
+                                <label for="company" class="text-sm font-medium text-foreground">Company <span class="text-muted-foreground font-normal">(optional)</span></label>
+                                <Input id="company" placeholder="Your company name" className="h-11 sm:h-12 bg-slate-50/50 border-slate-200 focus:border-blue-400 focus:ring-blue-400/20 transition-all rounded-lg sm:rounded-xl" />
                             </div>
-                            <div class="grid gap-2">
-                                <Textarea placeholder="How can we help?" className="min-h-[120px] bg-background/40 border-border/40 focus:border-accent/50 focus:ring-accent/20 transition-all resize-none backdrop-blur-sm" />
+                            <div class="space-y-1.5 sm:space-y-2">
+                                <label for="message" class="text-sm font-medium text-foreground">Message</label>
+                                <Textarea id="message" placeholder="Tell us about your project, timeline, and any specific requirements..." className="min-h-[120px] sm:min-h-[140px] bg-slate-50/50 border-slate-200 focus:border-blue-400 focus:ring-blue-400/20 transition-all resize-none rounded-lg sm:rounded-xl" />
                             </div>
-                        </div>
-                        <Button className="w-full bg-accent hover:bg-accent/90 text-white shadow-lg shadow-accent/25 font-medium">
-                            Send Message
-                            <ArrowRight className="w-4 h-4 ml-2" />
-                        </Button>
-                    </form>
+                            <Button className="w-full h-12 sm:h-14 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/30 font-semibold text-sm sm:text-base rounded-lg sm:rounded-xl transition-all duration-300">
+                                Send Message
+                                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                            </Button>
+                        </form>
+                    </div>
                 </div>
             </CardContent>
         </Card>

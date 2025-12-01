@@ -1,19 +1,34 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Typography: Satoshi for headings (geometric, modern), Söhne/Inter for body */
+@font-face {
+  font-family: 'Satoshi';
+  src: url('https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap');
+  font-display: swap;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-primary: #202936;
-  --color-accent: #2563eb;
-  --color-background: #e2e8f0;
+  --color-primary: #0f172a;
+  --color-accent: #3b82f6;
+  --color-accent-vivid: #60a5fa;
+  --color-background: #f1f5f9;
+  --color-surface: #ffffff;
+  --color-glow: #3b82f6;
 
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Satoshi", "Inter", system-ui, sans-serif;
 }
 
 @layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
   .animate-fade-in-up {
-    animation: fadeInUp 0.7s ease-out forwards;
+    animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 
   .animate-delay-100 {
@@ -32,39 +47,71 @@
     animation-delay: 0.4s;
     opacity: 0;
   }
-  
+
+  /* Premium mesh gradient with more presence */
   .mesh-gradient {
-    background-color: hsla(214, 32%, 91%, 1);
-    background-image: 
-        radial-gradient(at 0% 0%, hsla(221, 83%, 53%, 0.2) 0px, transparent 50%),
-        radial-gradient(at 100% 0%, hsla(210, 100%, 60%, 0.15) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, hsla(220, 100%, 70%, 0.15) 0px, transparent 50%),
-        radial-gradient(at 0% 100%, hsla(215, 100%, 65%, 0.15) 0px, transparent 50%),
-        radial-gradient(at 50% 50%, hsla(221, 83%, 53%, 0.1) 0px, transparent 50%);
+    background-color: #f8fafc;
+    background-image:
+        radial-gradient(at 0% 0%, hsla(217, 91%, 60%, 0.35) 0px, transparent 50%),
+        radial-gradient(at 98% 2%, hsla(199, 89%, 48%, 0.25) 0px, transparent 45%),
+        radial-gradient(at 100% 100%, hsla(221, 83%, 53%, 0.3) 0px, transparent 50%),
+        radial-gradient(at 2% 98%, hsla(199, 95%, 55%, 0.2) 0px, transparent 45%),
+        radial-gradient(at 50% 50%, hsla(217, 91%, 60%, 0.08) 0px, transparent 60%);
     background-size: 200% 200%;
-    animation: mesh 15s ease-in-out infinite alternate;
+    animation: mesh 20s ease-in-out infinite alternate;
+  }
+
+  /* Text gradient utility */
+  .text-gradient {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow effect for accents */
+  .glow-accent {
+    box-shadow:
+      0 0 20px hsla(217, 91%, 60%, 0.4),
+      0 0 40px hsla(217, 91%, 60%, 0.2),
+      0 0 60px hsla(217, 91%, 60%, 0.1);
+  }
+
+  /* Subtle noise texture overlay */
+  .noise-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.015;
+    pointer-events: none;
+    mix-blend-mode: overlay;
   }
 }
 
 @keyframes mesh {
   0% {
     background-position: 0% 0%;
-    background-size: 200% 200%;
+    background-size: 180% 180%;
   }
-  50% {
-    background-position: 100% 100%;
-    background-size: 250% 250%;
+  33% {
+    background-position: 100% 50%;
+    background-size: 220% 220%;
+  }
+  66% {
+    background-position: 50% 100%;
+    background-size: 200% 200%;
   }
   100% {
     background-position: 0% 50%;
-    background-size: 200% 200%;
+    background-size: 180% 180%;
   }
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(32px);
   }
   to {
     opacity: 1;
@@ -72,10 +119,36 @@
   }
 }
 
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
 /* Selection styling */
 ::selection {
-  background-color: var(--accent);
+  background-color: hsla(217, 91%, 60%, 0.9);
   color: white;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus visible styles */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
 @theme inline {
@@ -117,43 +190,44 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  /* Primary: #202936 */
-  --primary: hsl(217 26% 17%); 
+  --radius: 0.75rem;
+
+  /* Primary: Deep slate for strong contrast */
+  --primary: hsl(222 47% 11%);
   --primary-foreground: hsl(210 40% 98%);
-  
-  /* Accent: #2563eb */
-  --accent: hsl(221 83% 53%);
+
+  /* Accent: Vivid electric blue */
+  --accent: hsl(217 91% 60%);
   --accent-foreground: hsl(210 40% 98%);
 
-  /* Background: #e2e8f0 */
-  --background: hsl(214 32% 91%);
-  --foreground: hsl(217 26% 17%);
+  /* Background: Clean slate */
+  --background: hsl(210 40% 96%);
+  --foreground: hsl(222 47% 11%);
 
-  /* Card: White with slight tint */
+  /* Card: Crisp white with presence */
   --card: hsl(0 0% 100%);
-  --card-foreground: hsl(217 26% 17%);
+  --card-foreground: hsl(222 47% 11%);
 
   /* Popover */
   --popover: hsl(0 0% 100%);
-  --popover-foreground: hsl(217 26% 17%);
+  --popover-foreground: hsl(222 47% 11%);
 
-  /* Secondary: Lighter slate */
-  --secondary: hsl(210 40% 96.1%);
-  --secondary-foreground: hsl(222.2 47.4% 11.2%);
+  /* Secondary: Subtle slate */
+  --secondary: hsl(210 40% 94%);
+  --secondary-foreground: hsl(222 47% 11%);
 
-  /* Muted */
-  --muted: hsl(210 40% 96.1%);
-  --muted-foreground: hsl(215.4 16.3% 46.9%);
+  /* Muted: For secondary text */
+  --muted: hsl(210 40% 94%);
+  --muted-foreground: hsl(215 20% 45%);
 
   /* Destructive */
-  --destructive: hsl(0 84.2% 60.2%);
+  --destructive: hsl(0 84% 60%);
   --destructive-foreground: hsl(210 40% 98%);
 
-  /* Border/Input/Ring */
-  --border: hsl(214.3 31.8% 91.4%);
-  --input: hsl(214.3 31.8% 91.4%);
-  --ring: hsl(221 83% 53%);
+  /* Border/Input/Ring - slightly more definition */
+  --border: hsl(214 32% 88%);
+  --input: hsl(214 32% 88%);
+  --ring: hsl(217 91% 60%);
 
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);

@@ -36,94 +36,131 @@ export default function Hero({
   const ctaRef = useRef<HTMLDivElement | null>(null);
   const badgeRef = useRef<HTMLDivElement | null>(null);
   const microRef = useRef<HTMLUListElement | null>(null);
-  const microItem1Ref = useRef<HTMLLIElement | null>(null);
-  const microItem2Ref = useRef<HTMLLIElement | null>(null);
-  const microItem3Ref = useRef<HTMLLIElement | null>(null);
+  const microItemRefs = useRef<(HTMLLIElement | null)[]>([]);
+  const accentLineRef = useRef<HTMLDivElement | null>(null);
 
   useGSAP(
     () => {
       if (!headerRef.current) return;
 
-        gsap.set([headerRef.current, paraRef.current, ctaRef.current, badgeRef.current], {
-          autoAlpha: 0,
-          y: 20
-        });
+      // Initial states
+      gsap.set([headerRef.current, paraRef.current, ctaRef.current, badgeRef.current], {
+        autoAlpha: 0,
+        y: 40
+      });
 
-        const microItems = [microItem1Ref.current, microItem2Ref.current, microItem3Ref.current].filter(Boolean);
-        if (microItems.length > 0) {
-          gsap.set(microItems, { autoAlpha: 0, y: 10 });
-        }
+      if (accentLineRef.current) {
+        gsap.set(accentLineRef.current, { scaleX: 0, transformOrigin: 'left' });
+      }
 
-        const tl = gsap.timeline({
-          defaults: { ease: 'power3.out' },
-        });
+      const microItems = microItemRefs.current.filter(Boolean);
+      if (microItems.length > 0) {
+        gsap.set(microItems, { autoAlpha: 0, y: 16 });
+      }
 
-        if (badgeRef.current) {
-          tl.to(badgeRef.current, { autoAlpha: 1, y: 0, duration: 0.6 }, 0.1);
-        }
-        
-        tl.to(headerRef.current, { autoAlpha: 1, y: 0, duration: 0.8 }, 0.2);
-        
-        if (paraRef.current) {
-          tl.to(paraRef.current, { autoAlpha: 1, y: 0, duration: 0.8 }, 0.3);
-        }
-        
-        if (ctaRef.current) {
-          tl.to(ctaRef.current, { autoAlpha: 1, y: 0, duration: 0.6 }, 0.4);
-        }
-        
-        if (microItems.length > 0) {
-          tl.to(microItems, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.1 }, 0.5);
-        }
+      // Animation timeline with dramatic easing
+      const tl = gsap.timeline({
+        defaults: { ease: 'expo.out' },
+      });
+
+      if (badgeRef.current) {
+        tl.to(badgeRef.current, { autoAlpha: 1, y: 0, duration: 0.8 }, 0.2);
+      }
+
+      tl.to(headerRef.current, { autoAlpha: 1, y: 0, duration: 1.2 }, 0.3);
+
+      if (accentLineRef.current) {
+        tl.to(accentLineRef.current, { scaleX: 1, duration: 0.8, ease: 'power2.inOut' }, 0.6);
+      }
+
+      if (paraRef.current) {
+        tl.to(paraRef.current, { autoAlpha: 1, y: 0, duration: 1 }, 0.5);
+      }
+
+      if (ctaRef.current) {
+        tl.to(ctaRef.current, { autoAlpha: 1, y: 0, duration: 0.8 }, 0.7);
+      }
+
+      if (microItems.length > 0) {
+        tl.to(microItems, { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.08 }, 0.9);
+      }
     },
     { scope: sectionRef },
   );
 
   return (
-    <section ref={sectionRef} className="relative h-screen w-full overflow-hidden text-foreground">
-      {/* Removed local ShaderBackground as it's now global in Layout */}
+    <section ref={sectionRef} className="relative min-h-screen w-full overflow-hidden text-foreground">
+      {/* Decorative gradient orb - hidden on mobile for performance */}
+      <div className="hidden sm:block absolute top-1/4 -right-32 w-[500px] h-[500px] bg-gradient-to-br from-blue-400/20 via-cyan-300/10 to-transparent rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+      <div className="hidden sm:block absolute bottom-1/4 -left-32 w-[400px] h-[400px] bg-gradient-to-tr from-blue-500/15 via-indigo-400/10 to-transparent rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
 
-      <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-start gap-6 px-6 pb-24 pt-36 sm:gap-8 sm:pt-44 md:px-10 lg:px-16">
-        <div ref={badgeRef} className="inline-flex items-center gap-2 rounded-full border border-primary/10 bg-primary/5 px-3 py-1.5 backdrop-blur-sm">
-          <span className="text-[10px] font-light uppercase tracking-[0.08em] text-accent bg-accent/10 px-1.5 py-0.5 rounded border border-accent/20">{badgeLabel}</span>
-          <span className="text-xs font-light tracking-tight text-muted-foreground">{badgeText}</span>
+      <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-start gap-6 px-5 pb-20 pt-28 sm:gap-8 sm:pt-40 sm:px-6 md:px-12 lg:px-20">
+        {/* Badge */}
+        <div ref={badgeRef} className="inline-flex items-center gap-2 rounded-full border border-primary/8 bg-white/60 px-3 py-1.5 backdrop-blur-md shadow-sm">
+          <span className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.1em] text-blue-600 bg-blue-500/10 px-2 py-0.5 rounded-full">{badgeLabel}</span>
+          <span className="text-[11px] sm:text-xs font-medium tracking-tight text-muted-foreground">{badgeText}</span>
         </div>
 
-        <h1 ref={headerRef} className="max-w-3xl text-left text-5xl font-extralight leading-[1.1] tracking-tight text-foreground sm:text-6xl md:text-7xl">
-          {title}
-        </h1>
+        {/* Main headline with Satoshi font */}
+        <div className="relative">
+          <h1
+            ref={headerRef}
+            className="max-w-4xl text-left text-[2rem] font-bold leading-[1.1] tracking-[-0.02em] text-foreground sm:text-5xl md:text-6xl lg:text-7xl"
+            style={{ fontFamily: 'Satoshi, Inter, system-ui, sans-serif' }}
+          >
+            {title}
+          </h1>
+          {/* Accent underline */}
+          <div
+            ref={accentLineRef}
+            className="absolute -bottom-2 sm:-bottom-3 left-0 h-0.5 sm:h-1 w-16 sm:w-24 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full"
+            aria-hidden="true"
+          />
+        </div>
 
-        <p ref={paraRef} className="max-w-xl text-left text-lg font-light leading-relaxed tracking-tight text-muted-foreground sm:text-xl">
+        {/* Description */}
+        <p ref={paraRef} className="max-w-2xl text-left text-base font-normal leading-relaxed text-muted-foreground sm:text-lg md:text-xl">
           {description}
         </p>
 
-        <div ref={ctaRef} className="flex flex-wrap items-center gap-4 pt-4">
+        {/* CTA Buttons */}
+        <div ref={ctaRef} className="flex flex-col sm:flex-row w-full sm:w-auto gap-3 sm:gap-4 pt-2">
           {ctaButtons.map((button, index) => (
             <a
               key={index}
               href={button.href}
-              className={`rounded-full px-8 py-4 text-sm font-medium transition-all duration-300 ${
+              className={`group relative rounded-full px-6 py-3.5 sm:px-8 sm:py-4 text-sm font-semibold transition-all duration-300 text-center ${
                 button.primary
-                  ? "bg-accent text-white hover:bg-accent/90 hover:shadow-[0_0_20px_rgba(37,99,235,0.3)]"
-                  : "border border-primary/10 bg-white/50 text-foreground hover:bg-white/80 backdrop-blur-sm shadow-sm"
+                  ? "bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/30 hover:-translate-y-0.5 active:translate-y-0"
+                  : "border border-primary/10 bg-white/70 text-foreground hover:bg-white hover:border-primary/20 backdrop-blur-sm shadow-sm hover:shadow-md"
               }`}
             >
-              {button.text}
+              {button.primary && (
+                <span className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+              )}
+              <span className="relative">{button.text}</span>
             </a>
           ))}
         </div>
 
-        <ul ref={microRef} className="mt-8 flex flex-wrap gap-8 text-sm font-light tracking-tight text-muted-foreground">
-          {microDetails.map((detail, index) => {
-            const refMap = [microItem1Ref, microItem2Ref, microItem3Ref];
-            return (
-              <li key={index} ref={refMap[index]} className="flex items-center gap-2.5">
-                <div className="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_8px_rgba(37,99,235,0.6)]" /> {detail}
-              </li>
-            );
-          })}
+        {/* Micro details */}
+        <ul ref={microRef} className="mt-4 sm:mt-6 flex flex-wrap gap-x-6 sm:gap-x-10 gap-y-3 text-xs sm:text-sm font-medium text-muted-foreground">
+          {microDetails.map((detail, index) => (
+            <li
+              key={index}
+              ref={el => { microItemRefs.current[index] = el; }}
+              className="flex items-center gap-2 sm:gap-3 group cursor-default"
+            >
+              <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75 animate-ping" style={{ animationDuration: '2s' }} />
+                <span className="relative inline-flex h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400" />
+              </span>
+              <span className="group-hover:text-foreground transition-colors duration-200">{detail}</span>
+            </li>
+          ))}
         </ul>
       </div>
+
     </section>
   );
 }
