@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Mail, ArrowRight } from "lucide-react";
 ---
 
-<section id="contact" class="py-24 md:py-32 px-6 bg-background relative">
+<section id="contact" class="py-24 md:py-32 px-6 relative z-10">
     <div class="max-w-4xl mx-auto">
         <div class="text-center mb-16">
             <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-6">Ready to Elevate Your Event?</h2>
@@ -15,7 +15,7 @@ import { Mail, ArrowRight } from "lucide-react";
             </p>
         </div>
 
-        <Card className="border-border/50 shadow-lg bg-card/80 backdrop-blur-sm">
+        <Card className="border-border/40 shadow-lg bg-card/40 backdrop-blur-md">
             <CardContent className="p-8 md:p-12">
                 <div class="grid md:grid-cols-2 gap-12 items-center">
                     <div class="space-y-6">
@@ -37,13 +37,13 @@ import { Mail, ArrowRight } from "lucide-react";
                     <form class="space-y-4">
                         <div class="grid gap-4">
                             <div class="grid gap-2">
-                                <Input placeholder="Name" className="bg-background/50 border-border/50 focus:border-accent/50 focus:ring-accent/20 transition-all" />
+                                <Input placeholder="Name" className="bg-background/40 border-border/40 focus:border-accent/50 focus:ring-accent/20 transition-all backdrop-blur-sm" />
                             </div>
                             <div class="grid gap-2">
-                                <Input type="email" placeholder="Email" className="bg-background/50 border-border/50 focus:border-accent/50 focus:ring-accent/20 transition-all" />
+                                <Input type="email" placeholder="Email" className="bg-background/40 border-border/40 focus:border-accent/50 focus:ring-accent/20 transition-all backdrop-blur-sm" />
                             </div>
                             <div class="grid gap-2">
-                                <Textarea placeholder="How can we help?" className="min-h-[120px] bg-background/50 border-border/50 focus:border-accent/50 focus:ring-accent/20 transition-all resize-none" />
+                                <Textarea placeholder="How can we help?" className="min-h-[120px] bg-background/40 border-border/40 focus:border-accent/50 focus:ring-accent/20 transition-all resize-none backdrop-blur-sm" />
                             </div>
                         </div>
                         <Button className="w-full bg-accent hover:bg-accent/90 text-white shadow-lg shadow-accent/25 font-medium">
