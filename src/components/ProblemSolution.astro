@@ -1,16 +1,16 @@
 ---
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 ---
 
-<section class="py-24 px-6 bg-background relative z-10">
+<section class="py-24 px-6 bg-background relative z-10 overflow-hidden">
     <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         
         {/* Problem Section */}
-        <div class="space-y-8">
+        <div class="space-y-8 relative z-20">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-500 text-xs font-medium uppercase tracking-wider border border-red-500/20">
                 The Problem
             </div>
-            <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
                 Content is the Hard Part
             </h2>
             <p class="text-lg text-muted-foreground leading-relaxed">
@@ -18,22 +18,41 @@ import { Card, CardContent } from "@/components/ui/card";
             </p>
         </div>
 
-        {/* Solution Section */}
-        <Card class="bg-primary text-primary-foreground overflow-hidden border-none shadow-2xl relative group">
-            <div class="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-            <div class="absolute -right-20 -top-20 w-64 h-64 bg-accent/20 rounded-full blur-3xl pointer-events-none"></div>
+        {/* Code Snippet Visual */}
+        <div class="relative group perspective-1000">
+            {/* Glow effect behind the code window */}
+            <div class="absolute -inset-4 bg-gradient-to-r from-accent/30 to-purple-500/30 rounded-[2rem] blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-700"></div>
             
-            <CardContent class="p-10 md:p-12 relative z-10 space-y-8">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-xs font-medium uppercase tracking-wider backdrop-blur-sm border border-white/20">
-                    Our Approach
+            <Card className="relative bg-[#1e1e1e] border-none shadow-2xl rounded-xl overflow-hidden transform transition-transform duration-500 hover:scale-[1.01] hover:rotate-1 ring-1 ring-white/10">
+                {/* Window Controls */}
+                <div class="flex items-center gap-2 px-4 py-3 bg-[#252526] border-b border-white/5">
+                    <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+                    <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+                    <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+                    <div class="ml-auto text-[10px] text-white/30 font-mono">exploit.c</div>
                 </div>
-                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white">
-                    Your Specialized Content Engine
-                </h2>
-                <p class="text-lg text-white/80 leading-relaxed">
-                    We are the specialized content engine for your cybersecurity events. We strictly focus on development by crafting bespoke scenarios covering the full spectrum of cybersecurity disciplines. These are delivered as ready-to-deploy packages so you can focus on managing the event rather than debugging the code.
-                </p>
-            </CardContent>
-        </Card>
+                
+                {/* Code Content */}
+                <div class="p-6 overflow-x-auto">
+                    <pre class="font-mono text-sm leading-relaxed">
+<span class="text-[#569cd6]">#include</span> <span class="text-[#ce9178]">&lt;stdio.h&gt;</span>
+<span class="text-[#569cd6]">#include</span> <span class="text-[#ce9178]">&lt;stdlib.h&gt;</span>
+<span class="text-[#569cd6]">#include</span> <span class="text-[#ce9178]">&lt;string.h&gt;</span>
+
+<span class="text-[#c586c0]">#define</span> <span class="text-[#4fc1ff]">FLAGSIZE_MAX</span> <span class="text-[#b5cea8]">64</span>
+
+<span class="text-[#6a9955]">// Create struct</span>
+<span class="text-[#569cd6]">typedef</span> <span class="text-[#569cd6]">struct</span> {'{'}
+  <span class="text-[#569cd6]">char</span> a[<span class="text-[#b5cea8]">10</span>];
+  <span class="text-[#569cd6]">char</span> b[<span class="text-[#b5cea8]">10</span>];
+  <span class="text-[#569cd6]">char</span> c[<span class="text-[#b5cea8]">10</span>];
+  <span class="text-[#569cd6]">char</span> flag[<span class="text-[#b5cea8]">5</span>];
+{'}'} <span class="text-[#9cdcfe]">object</span>;
+
+<span class="text-[#569cd6]">int</span> <span class="text-[#9cdcfe]">num_allocs</span>;
+<span class="text-[#9cdcfe]">object</span> *<span class="text-[#9cdcfe]">x</span>;</pre>
+                </div>
+            </Card>
+        </div>
     </div>
 </section>

@@ -3,23 +3,25 @@ import { Button } from "@/components/ui/button";
 import { MobileNav } from "./MobileNav";
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/40 supports-[backdrop-filter]:bg-background/60">
-    <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+<header class="fixed top-0 left-0 right-0 z-50 pt-4 px-4 flex justify-center pointer-events-none">
+    <nav class="w-full max-w-5xl bg-background/70 backdrop-blur-xl border border-white/20 shadow-[0_8px_30px_rgba(0,0,0,0.04)] rounded-full px-6 h-14 flex items-center justify-between pointer-events-auto transition-all hover:bg-background/80 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
         <a href="/" class="flex items-center gap-3 group">
-            <div class="relative">
-                <div class="absolute -inset-1 rounded-lg bg-gradient-to-r from-accent to-accent/50 opacity-0 group-hover:opacity-50 blur transition duration-500"></div>
-                <img src="/favicon.png" alt="Gooseberry Consulting" class="relative h-8 w-8 rounded-lg shadow-sm">
+            <div class="relative flex items-center justify-center">
+                <div class="absolute inset-0 rounded-full bg-accent/20 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500"></div>
+                <img src="/favicon.png" alt="Gooseberry" class="relative h-7 w-7 rounded-md shadow-sm group-hover:scale-105 transition-transform duration-300">
             </div>
-            <span class="font-semibold text-lg tracking-tight hidden sm:block text-foreground/90 group-hover:text-foreground transition-colors">Gooseberry Consulting</span>
+            <span class="font-medium text-base tracking-tight hidden sm:block text-foreground/90 group-hover:text-foreground transition-colors">Gooseberry</span>
         </a>
 
         {/* Desktop Navigation */}
-        <div class="hidden md:flex items-center gap-8">
-            <a href="#services" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Services</a>
-            <a href="#about" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">About</a>
-            <Button asChild variant="default" size="sm" className="bg-accent hover:bg-accent/90 text-white font-medium shadow-[0_0_15px_rgba(37,99,235,0.3)] hover:shadow-[0_0_25px_rgba(37,99,235,0.5)] transition-all duration-300 rounded-full px-6">
-                <a href="#contact">Get in Touch</a>
-            </Button>
+        <div class="hidden md:flex items-center gap-1">
+            <a href="#services" class="text-sm font-medium text-muted-foreground hover:text-foreground px-4 py-2 rounded-full hover:bg-secondary/50 transition-all">Services</a>
+            <a href="#about" class="text-sm font-medium text-muted-foreground hover:text-foreground px-4 py-2 rounded-full hover:bg-secondary/50 transition-all">About</a>
+            <div class="pl-2">
+                <Button asChild variant="default" size="sm" className="font-medium text-xs shadow-md shadow-accent/20 hover:shadow-accent/40">
+                    <a href="#contact">Get in Touch</a>
+                </Button>
+            </div>
         </div>
 
         {/* Mobile Navigation */}

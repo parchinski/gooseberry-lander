@@ -1,7 +1,6 @@
-import * as React from "react";
+import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
 
 export function MobileNav() {
   return (
