@@ -1,31 +1,42 @@
 ---
 const partners = [
-    { name: "MetaCTF", highlight: true },
-    { name: "SunshineCTF", highlight: false },
+  { name: "MetaCTF", highlight: true },
+  { name: "SunshineCTF", highlight: false },
 ];
 ---
-<section class="py-12 sm:py-20 px-5 sm:px-6 relative overflow-hidden">
-    <!-- Subtle divider lines -->
-    <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
-    <div class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
 
-    <div class="max-w-5xl mx-auto">
-        <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-16">
-            <p class="text-xs sm:text-sm uppercase tracking-[0.15em] sm:tracking-[0.2em] text-muted-foreground font-medium whitespace-nowrap">
-                Trusted By
-            </p>
-            <div class="h-px w-12 bg-slate-200 hidden md:block"></div>
-            <div class="flex items-center justify-center gap-8 sm:gap-12 md:gap-16 flex-wrap">
-                {partners.map((partner) => (
-                    <div class="group relative cursor-default">
-                        <span class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-slate-400 group-hover:text-foreground transition-all duration-500 font-display">
-                            {partner.name}
-                        </span>
-                        {/* Hover glow effect */}
-                        <div class="absolute -inset-4 bg-blue-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
-                    </div>
-                ))}
+<section class="py-12 sm:py-20 px-5 sm:px-6 relative overflow-hidden">
+  <!-- Subtle divider lines -->
+  <div
+    class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"
+  >
+  </div>
+  <div
+    class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"
+  >
+  </div>
+
+  <div class="max-w-5xl mx-auto">
+    <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-16">
+      <p
+        class="text-xs sm:text-sm uppercase tracking-[0.15em] sm:tracking-[0.2em] text-muted-foreground font-medium whitespace-nowrap"
+      >
+        Trusted By
+      </p>
+      <div class="h-px w-12 bg-slate-200 hidden md:block"></div>
+      <div class="flex items-center justify-center gap-8 sm:gap-12 md:gap-16 flex-wrap">
+        {
+          partners.map((partner) => (
+            <div class="group relative cursor-default">
+              <span class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-slate-400 group-hover:text-foreground transition-all duration-500 font-display">
+                {partner.name}
+              </span>
+              {/* Hover glow effect */}
+              <div class="absolute -inset-4 bg-blue-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
             </div>
-        </div>
+          ))
+        }
+      </div>
     </div>
+  </div>
 </section>

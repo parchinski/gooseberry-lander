@@ -53,33 +53,17 @@
     background-color: #f8fafc;
     background-image:
       radial-gradient(at 0% 0%, hsla(217, 91%, 60%, 0.35) 0px, transparent 50%),
-      radial-gradient(
-        at 98% 2%,
-        hsla(199, 89%, 48%, 0.25) 0px,
-        transparent 45%
-      ),
-      radial-gradient(
-        at 100% 100%,
-        hsla(221, 83%, 53%, 0.3) 0px,
-        transparent 50%
-      ),
+      radial-gradient(at 98% 2%, hsla(199, 89%, 48%, 0.25) 0px, transparent 45%),
+      radial-gradient(at 100% 100%, hsla(221, 83%, 53%, 0.3) 0px, transparent 50%),
       radial-gradient(at 2% 98%, hsla(199, 95%, 55%, 0.2) 0px, transparent 45%),
-      radial-gradient(
-        at 50% 50%,
-        hsla(217, 91%, 60%, 0.08) 0px,
-        transparent 60%
-      );
+      radial-gradient(at 50% 50%, hsla(217, 91%, 60%, 0.08) 0px, transparent 60%);
     background-size: 200% 200%;
     animation: mesh 20s ease-in-out infinite alternate;
   }
 
   /* Text gradient utility */
   .text-gradient {
-    background: linear-gradient(
-      135deg,
-      var(--color-primary) 0%,
-      var(--color-accent) 100%
-    );
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

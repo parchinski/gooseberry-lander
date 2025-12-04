@@ -13,11 +13,7 @@ export function MobileNav() {
     <div className="md:hidden">
       <Sheet>
         <SheetTrigger asChild>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="shrink-0 hover:bg-slate-100 rounded-xl"
-          >
+          <Button variant="ghost" size="icon" className="shrink-0 hover:bg-slate-100 rounded-xl">
             <Menu className="h-5 w-5" />
             <span className="sr-only">Toggle menu</span>
           </Button>
@@ -27,9 +23,7 @@ export function MobileNav() {
           className="w-[300px] bg-white/95 backdrop-blur-xl border-l border-slate-200"
         >
           <SheetTitle className="sr-only">Mobile Navigation</SheetTitle>
-          <SheetDescription className="sr-only">
-            Navigation links
-          </SheetDescription>
+          <SheetDescription className="sr-only">Navigation links</SheetDescription>
 
           <div className="flex flex-col h-full pt-8">
             <nav className="flex flex-col gap-2">

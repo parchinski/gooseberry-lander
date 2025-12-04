@@ -44,13 +44,10 @@ export default function Hero({
       if (!headerRef.current) return;
 
       // Initial states
-      gsap.set(
-        [headerRef.current, paraRef.current, ctaRef.current, badgeRef.current],
-        {
-          autoAlpha: 0,
-          y: 40,
-        },
-      );
+      gsap.set([headerRef.current, paraRef.current, ctaRef.current, badgeRef.current], {
+        autoAlpha: 0,
+        y: 40,
+      });
 
       if (accentLineRef.current) {
         gsap.set(accentLineRef.current, { scaleX: 0, transformOrigin: "left" });
@@ -73,11 +70,7 @@ export default function Hero({
       tl.to(headerRef.current, { autoAlpha: 1, y: 0, duration: 1.2 }, 0.3);
 
       if (accentLineRef.current) {
-        tl.to(
-          accentLineRef.current,
-          { scaleX: 1, duration: 0.8, ease: "power2.inOut" },
-          0.6,
-        );
+        tl.to(accentLineRef.current, { scaleX: 1, duration: 0.8, ease: "power2.inOut" }, 0.6);
       }
 
       if (paraRef.current) {
@@ -89,11 +82,7 @@ export default function Hero({
       }
 
       if (microItems.length > 0) {
-        tl.to(
-          microItems,
-          { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.08 },
-          0.9,
-        );
+        tl.to(microItems, { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.08 }, 0.9);
       }
     },
     { scope: sectionRef },

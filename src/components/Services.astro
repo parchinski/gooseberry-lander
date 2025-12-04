@@ -5,78 +5,101 @@ import { Shield, Package, Search, ArrowRight } from "lucide-react";
 const services = [
   {
     title: "Custom Challenge Development",
-    description: "Scenarios tailored to your exact difficulty requirements — from entry-level web exploitation to advanced binary analysis and everything between.",
+    description:
+      "Scenarios tailored to your exact difficulty requirements — from entry-level web exploitation to advanced binary analysis and everything between.",
     icon: Shield,
     gradient: "from-blue-500 via-blue-600 to-cyan-500",
-    number: "01"
+    number: "01",
   },
   {
     title: "Challenge Bundles",
-    description: "Pre-configured challenge sets like OWASP Top 10 or Intro to Reverse Engineering, ready for immediate integration into your platform.",
+    description:
+      "Pre-configured challenge sets like OWASP Top 10 or Intro to Reverse Engineering, ready for immediate integration into your platform.",
     icon: Package,
     gradient: "from-indigo-500 via-blue-500 to-cyan-400",
-    number: "02"
+    number: "02",
   },
   {
     title: "Technical QA & Maintenance",
-    description: "We test, debug, and update your existing challenge repositories to ensure flags work correctly and vulnerabilities remain stable.",
+    description:
+      "We test, debug, and update your existing challenge repositories to ensure flags work correctly and vulnerabilities remain stable.",
     icon: Search,
     gradient: "from-cyan-500 via-blue-500 to-indigo-500",
-    number: "03"
-  }
+    number: "03",
+  },
 ];
 ---
 
 <section id="services" class="py-16 sm:py-20 md:py-24 px-5 sm:px-6 relative z-10">
-    <!-- Section background accent -->
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/50 to-transparent pointer-events-none" aria-hidden="true"></div>
+  <!-- Section background accent -->
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/50 to-transparent pointer-events-none"
+    aria-hidden="true"
+  >
+  </div>
 
-    <div class="max-w-7xl mx-auto relative z-10">
-        <div class="text-center mb-12 sm:mb-20">
-            <span class="inline-flex items-center gap-2 py-1.5 px-3 sm:px-4 rounded-full bg-white/70 text-blue-600 text-[11px] sm:text-xs font-semibold tracking-wider uppercase mb-4 sm:mb-6 border border-blue-100 backdrop-blur-sm shadow-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
-                Our Services
-            </span>
-            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.02em] mb-4 sm:mb-6 text-foreground font-display">
-                Comprehensive CTF Solutions
-            </h2>
-            <p class="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                From single custom challenges to complete event packages, we provide the technical backbone for world-class cybersecurity competitions.
-            </p>
-        </div>
-
-        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            {services.map((service) => (
-                <Card className="relative border-0 bg-white/70 backdrop-blur-xl hover:bg-white/90 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-500/10 sm:hover:-translate-y-3 transition-all duration-500 ease-out group overflow-hidden rounded-xl sm:rounded-2xl">
-                    {/* Gradient border on hover - desktop only */}
-                    <div class={`hidden sm:block absolute inset-0 rounded-2xl bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-[1px]`}>
-                        <div class="absolute inset-[1px] rounded-2xl bg-white/95"></div>
-                    </div>
-
-                    {/* Number indicator */}
-                    <div class="absolute top-4 right-4 sm:top-6 sm:right-6 text-4xl sm:text-6xl font-black text-slate-100 group-hover:text-blue-100 transition-colors duration-500 select-none font-display">
-                        {service.number}
-                    </div>
-
-                    <CardHeader className="relative z-10 pt-6 sm:pt-8 pb-3 sm:pb-4">
-                        <div class={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-4 sm:mb-5 shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]`}>
-                            <service.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" strokeWidth={2} />
-                        </div>
-                        <CardTitle className="text-lg sm:text-xl font-bold tracking-tight text-foreground group-hover:text-blue-600 transition-colors duration-300 font-display">
-                            {service.title}
-                        </CardTitle>
-                    </CardHeader>
-                    <CardContent className="relative z-10 pb-6 sm:pb-8">
-                        <CardDescription className="text-sm sm:text-base leading-relaxed text-muted-foreground mb-4 sm:mb-6">
-                            {service.description}
-                        </CardDescription>
-                        <a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 sm:opacity-0 sm:group-hover:opacity-100 sm:translate-y-2 sm:group-hover:translate-y-0 transition-all duration-300">
-                            Learn more
-                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                        </a>
-                    </CardContent>
-                </Card>
-            ))}
-        </div>
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="text-center mb-12 sm:mb-20">
+      <span
+        class="inline-flex items-center gap-2 py-1.5 px-3 sm:px-4 rounded-full bg-white/70 text-blue-600 text-[11px] sm:text-xs font-semibold tracking-wider uppercase mb-4 sm:mb-6 border border-blue-100 backdrop-blur-sm shadow-sm"
+      >
+        <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
+        Our Services
+      </span>
+      <h2
+        class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.02em] mb-4 sm:mb-6 text-foreground font-display"
+      >
+        Comprehensive CTF Solutions
+      </h2>
+      <p
+        class="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+      >
+        From single custom challenges to complete event packages, we provide the technical backbone
+        for world-class cybersecurity competitions.
+      </p>
     </div>
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+      {
+        services.map((service) => (
+          <Card className="relative border-0 bg-white/70 backdrop-blur-xl hover:bg-white/90 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-500/10 sm:hover:-translate-y-3 transition-all duration-500 ease-out group overflow-hidden rounded-xl sm:rounded-2xl">
+            {/* Gradient border on hover - desktop only */}
+            <div
+              class={`hidden sm:block absolute inset-0 rounded-2xl bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-[1px]`}
+            >
+              <div class="absolute inset-[1px] rounded-2xl bg-white/95" />
+            </div>
+
+            {/* Number indicator */}
+            <div class="absolute top-4 right-4 sm:top-6 sm:right-6 text-4xl sm:text-6xl font-black text-slate-100 group-hover:text-blue-100 transition-colors duration-500 select-none font-display">
+              {service.number}
+            </div>
+
+            <CardHeader className="relative z-10 pt-6 sm:pt-8 pb-3 sm:pb-4">
+              <div
+                class={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-4 sm:mb-5 shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]`}
+              >
+                <service.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" strokeWidth={2} />
+              </div>
+              <CardTitle className="text-lg sm:text-xl font-bold tracking-tight text-foreground group-hover:text-blue-600 transition-colors duration-300 font-display">
+                {service.title}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="relative z-10 pb-6 sm:pb-8">
+              <CardDescription className="text-sm sm:text-base leading-relaxed text-muted-foreground mb-4 sm:mb-6">
+                {service.description}
+              </CardDescription>
+              <a
+                href="#contact"
+                class="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 sm:opacity-0 sm:group-hover:opacity-100 sm:translate-y-2 sm:group-hover:translate-y-0 transition-all duration-300"
+              >
+                Learn more
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+              </a>
+            </CardContent>
+          </Card>
+        ))
+      }
+    </div>
+  </div>
 </section>

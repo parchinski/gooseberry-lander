@@ -1,43 +1,54 @@
 ---
-import '../styles/global.css';
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/500.css';
-import '@fontsource/inter/600.css';
+import "../styles/global.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
 
 interface Props {
-	title: string;
-    description?: string;
+  title: string;
+  description?: string;
 }
 
-const { title, description = "Expertly crafted cybersecurity challenges for your next exercise. Premium challenge sets for CTFs and corporate training." } = Astro.props;
+const {
+  title,
+  description = "Expertly crafted cybersecurity challenges for your next exercise. Premium challenge sets for CTFs and corporate training.",
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en" class="scroll-smooth">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
-        <meta name="keywords" content="Capture the Flag, King of the Hill, cybersecurity, CTF challenges, cybersecurity training" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/png" href="/favicon.png" />
-		<meta name="generator" content={Astro.generator} />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="Capture the Flag, King of the Hill, cybersecurity, CTF challenges, cybersecurity training"
+    />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="generator" content={Astro.generator} />
 
-		<!-- Satoshi Display Font -->
-		<link rel="preconnect" href="https://api.fontshare.com" crossorigin="anonymous">
-		<link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap" rel="stylesheet">
+    <!-- Satoshi Display Font -->
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin="anonymous" />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap"
+      rel="stylesheet"
+    />
 
-        <!-- Open Graph -->
-        <meta property="og:title" content={title}>
-        <meta property="og:description" content={description}>
-        <meta property="og:type" content="website">
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
 
-		<title>{title}</title>
-	</head>
-	<body class="bg-background text-primary font-sans antialiased relative min-h-screen overflow-x-hidden">
-		<!-- Animated mesh gradient background -->
-        <div class="fixed inset-0 -z-50 mesh-gradient w-full h-full" aria-hidden="true"></div>
-		<!-- Subtle noise texture -->
-		<div class="fixed inset-0 -z-40 noise-overlay pointer-events-none" aria-hidden="true"></div>
-		<slot />
-	</body>
+    <title>{title}</title>
+  </head>
+  <body
+    class="bg-background text-primary font-sans antialiased relative min-h-screen overflow-x-hidden"
+  >
+    <!-- Animated mesh gradient background -->
+    <div class="fixed inset-0 -z-50 mesh-gradient w-full h-full" aria-hidden="true"></div>
+    <!-- Subtle noise texture -->
+    <div class="fixed inset-0 -z-40 noise-overlay pointer-events-none" aria-hidden="true"></div>
+    <slot />
+  </body>
 </html>
