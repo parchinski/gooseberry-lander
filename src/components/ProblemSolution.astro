@@ -3,55 +3,89 @@ import { Card } from "@/components/ui/card";
 ---
 
 <section id="about" class="py-16 sm:py-20 md:py-24 px-5 sm:px-6 relative z-10 overflow-hidden">
-    <!-- Decorative elements - hidden on mobile -->
-    <div class="hidden sm:block absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-400/10 to-transparent rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+  <!-- Decorative elements - hidden on mobile -->
+  <div
+    class="hidden sm:block absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-400/10 to-transparent rounded-full blur-3xl pointer-events-none"
+    aria-hidden="true"
+  >
+  </div>
 
-    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-24 items-center relative z-10">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-24 items-center relative z-10">
+    {/* Problem Section */}
+    <div class="space-y-6 sm:space-y-8 relative z-20">
+      <div
+        class="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-white/70 text-blue-600 text-[11px] sm:text-xs font-semibold uppercase tracking-wider border border-blue-100 backdrop-blur-sm shadow-sm"
+      >
+        <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+        The Challenge
+      </div>
+      <h2
+        class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-bold tracking-[-0.02em] text-foreground leading-[1.1] font-display"
+      >
+        Content is the<br class="hidden sm:block" />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500"
+          >Hard Part</span
+        >
+      </h2>
+      <p class="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed">
+        Hosting platforms are easy to find. Building high-quality, bug-free cybersecurity challenges
+        takes <span class="font-semibold text-foreground">hundreds of hours</span> of specialized engineering.
+      </p>
+      <p class="text-base sm:text-lg text-muted-foreground leading-relaxed">
+        Organizations face a content gap: they have the infrastructure to run events but lack the
+        time or expertise to create rigorous scenarios.
+      </p>
+    </div>
 
-        {/* Problem Section */}
-        <div class="space-y-6 sm:space-y-8 relative z-20">
-            <div class="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-white/70 text-blue-600 text-[11px] sm:text-xs font-semibold uppercase tracking-wider border border-blue-100 backdrop-blur-sm shadow-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                The Challenge
+    {/* Code Snippet Visual */}
+    <div class="relative group">
+      {/* Glow effect - smaller on mobile */}
+      <div
+        class="absolute -inset-3 sm:-inset-6 bg-gradient-to-r from-blue-500/20 via-cyan-500/15 to-indigo-500/20 sm:from-blue-500/25 sm:via-cyan-500/20 sm:to-indigo-500/25 rounded-2xl sm:rounded-3xl blur-xl sm:blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-700"
+      >
+      </div>
+
+      {/* Floating decoration - hidden on mobile */}
+      <div
+        class="hidden sm:block absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl opacity-20 blur-xl group-hover:opacity-30 transition-opacity duration-500"
+        aria-hidden="true"
+      >
+      </div>
+
+      <Card
+        className="relative bg-[#0d1117] border-0 shadow-xl sm:shadow-2xl rounded-xl sm:rounded-2xl overflow-hidden transform transition-all duration-700 ease-out hover:scale-[1.02] ring-1 ring-white/5 p-0"
+      >
+        {/* Window Controls */}
+        <div
+          class="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 h-8 sm:h-9 bg-[#161b22] border-b border-white/5"
+        >
+          <div class="flex gap-1.5 sm:gap-2">
+            <div
+              class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ff5f56] shadow-[0_0_6px_#ff5f56]"
+            >
             </div>
-            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-bold tracking-[-0.02em] text-foreground leading-[1.1] font-display">
-                Content is the<br class="hidden sm:block" />
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Hard Part</span>
-            </h2>
-            <p class="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed">
-                Hosting platforms are easy to find. Building high-quality, bug-free cybersecurity challenges takes <span class="font-semibold text-foreground">hundreds of hours</span> of specialized engineering.
-            </p>
-            <p class="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                Organizations face a content gap: they have the infrastructure to run events but lack the time or expertise to create rigorous scenarios.
-            </p>
-
+            <div
+              class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffbd2e] shadow-[0_0_6px_#ffbd2e]"
+            >
+            </div>
+            <div
+              class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#27c93f] shadow-[0_0_6px_#27c93f]"
+            >
+            </div>
+          </div>
+          <div class="flex-1 text-center">
+            <span
+              class="text-[10px] sm:text-[11px] text-white/40 font-mono bg-white/5 px-2 sm:px-3 py-0.5 sm:py-1 rounded-md"
+              >exploit.py</span
+            >
+          </div>
+          <div class="w-[40px] sm:w-[52px]"></div>
         </div>
 
-        {/* Code Snippet Visual */}
-        <div class="relative group">
-            {/* Glow effect - smaller on mobile */}
-            <div class="absolute -inset-3 sm:-inset-6 bg-gradient-to-r from-blue-500/20 via-cyan-500/15 to-indigo-500/20 sm:from-blue-500/25 sm:via-cyan-500/20 sm:to-indigo-500/25 rounded-2xl sm:rounded-3xl blur-xl sm:blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-700"></div>
-
-            {/* Floating decoration - hidden on mobile */}
-            <div class="hidden sm:block absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl opacity-20 blur-xl group-hover:opacity-30 transition-opacity duration-500" aria-hidden="true"></div>
-
-            <Card className="relative bg-[#0d1117] border-0 shadow-xl sm:shadow-2xl rounded-xl sm:rounded-2xl overflow-hidden transform transition-all duration-700 ease-out hover:scale-[1.02] ring-1 ring-white/5 p-0">
-                {/* Window Controls */}
-                <div class="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 h-8 sm:h-9 bg-[#161b22] border-b border-white/5">
-                    <div class="flex gap-1.5 sm:gap-2">
-                        <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ff5f56] shadow-[0_0_6px_#ff5f56]"></div>
-                        <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffbd2e] shadow-[0_0_6px_#ffbd2e]"></div>
-                        <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#27c93f] shadow-[0_0_6px_#27c93f]"></div>
-                    </div>
-                    <div class="flex-1 text-center">
-                        <span class="text-[10px] sm:text-[11px] text-white/40 font-mono bg-white/5 px-2 sm:px-3 py-0.5 sm:py-1 rounded-md">exploit.py</span>
-                    </div>
-                    <div class="w-[40px] sm:w-[52px]"></div>
-                </div>
-
-                {/* Code Content */}
-                <div class="py-2 sm:py-3 px-4 sm:px-6 overflow-x-auto custom-scrollbar">
-                    <pre class="font-mono text-[11px] sm:text-[13px] leading-[1.4] sm:leading-[1.5]"><code><span class="text-[#ff7b72]">import</span> <span class="text-[#79c0ff]">socket</span>
+        {/* Code Content */}
+        <div class="py-2 sm:py-3 px-4 sm:px-6 overflow-x-auto custom-scrollbar">
+          <pre
+            class="font-mono text-[11px] sm:text-[13px] leading-[1.4] sm:leading-[1.5]"><code><span class="text-[#ff7b72]">import</span> <span class="text-[#79c0ff]">socket</span>
 <span class="text-[#ff7b72]">from</span> <span class="text-[#79c0ff]">pwn</span> <span class="text-[#ff7b72]">import</span> <span class="text-[#c9d1d9]">*</span>
 
 <span class="text-[#79c0ff]">HOST</span> <span class="text-[#c9d1d9]">=</span> <span class="text-[#a5d6ff]">'challenge.local'</span>
@@ -68,33 +102,35 @@ import { Card } from "@/components/ui/card";
 
 <span class="text-[#ff7b72]">if</span> <span class="text-[#79c0ff]">__name__</span> <span class="text-[#c9d1d9]">==</span> <span class="text-[#a5d6ff]">'__main__'</span><span class="text-[#c9d1d9]">:</span>
     <span class="text-[#d2a8ff]">exploit</span><span class="text-[#c9d1d9]">()</span></code></pre>
-                </div>
-
-                {/* Bottom bar */}
-                <div class="flex items-center justify-between px-5 py-3 bg-[#161b22] border-t border-white/5 text-[11px] text-white/30 font-mono">
-                    <span>Python</span>
-                    <span class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                        Ready
-                    </span>
-                </div>
-            </Card>
         </div>
+
+        {/* Bottom bar */}
+        <div
+          class="flex items-center justify-between px-5 py-3 bg-[#161b22] border-t border-white/5 text-[11px] text-white/30 font-mono"
+        >
+          <span>Python</span>
+          <span class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+            Ready
+          </span>
+        </div>
+      </Card>
     </div>
+  </div>
 </section>
 
 <style>
-    .custom-scrollbar::-webkit-scrollbar {
-        height: 6px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-track {
-        background: transparent;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-        background: #30363d;
-        border-radius: 3px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-        background: #484f58;
-    }
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #30363d;
+    border-radius: 3px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #484f58;
+  }
 </style>

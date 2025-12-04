@@ -1,38 +1,33 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import NeuralNetworkHero from '../components/ui/neural-network-hero';
-import ProblemSolution from '../components/ProblemSolution.astro';
-import Services from '../components/Services.astro';
-import TrustSignals from '../components/TrustSignals.astro';
-import Contact from '../components/Contact.astro';
-import Footer from '../components/Footer.astro';
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import NeuralNetworkHero from "../components/ui/neural-network-hero";
+import ProblemSolution from "../components/ProblemSolution.astro";
+import Services from "../components/Services.astro";
+import TrustSignals from "../components/TrustSignals.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="Gooseberry Consulting | Cybersecurity Challenge Development">
-	<Navbar />
-	<main>
-		<NeuralNetworkHero 
-            client:load
-            title="Expertly Crafted Cybersecurity Challenges For Your Next Exercise"
-            description="Premium challenge sets for CTFs and corporate training. We build the rigorous technical content; you handle the hosting."
-            badgeText="Available Now"
-            badgeLabel="Premium Content"
-            ctaButtons={[
-                { text: "View Our Services", href: "#services", primary: true },
-                { text: "Get in Touch", href: "#contact" }
-            ]}
-            microDetails={[
-                "Web Exploitation",
-                "Binary Analysis", 
-                "Cloud Security",
-                "Cryptography"
-            ]}
-        />
-		<ProblemSolution />
-		<Services />
-		<TrustSignals />
-		<Contact />
-	</main>
-	<Footer />
+  <Navbar />
+  <main>
+    <NeuralNetworkHero
+      client:load
+      title="Expertly Crafted Cybersecurity Challenges For Your Next Exercise"
+      description="Premium challenge sets for CTFs and corporate training. We build the rigorous technical content; you handle the hosting."
+      badgeText="Available Now"
+      badgeLabel="Premium Content"
+      ctaButtons={[
+        { text: "View Our Services", href: "#services", primary: true },
+        { text: "Get in Touch", href: "#contact" },
+      ]}
+      microDetails={["Web Exploitation", "Binary Analysis", "Cloud Security", "Cryptography"]}
+    />
+    <ProblemSolution />
+    <Services />
+    <TrustSignals />
+    <Contact />
+  </main>
+  <Footer />
 </Layout>
